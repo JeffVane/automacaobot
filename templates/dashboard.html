@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">🚀 Dashboard</a>
+    <div class="d-flex">
+      <span class="navbar-text me-3">Bem-vindo, {{ username }}</span>
+      <a href="{{ url_for('logout') }}" class="btn btn-light btn-sm">🔓 Logout</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h4 class="card-title">🔍 Buscador de Leads</h4>
+            <form onsubmit="buscar(); return false;">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <input id="termo" class="form-control" placeholder="Digite o termo, ex: Clínica Odontológica" required>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="resultado" class="mt-4"></div>
+</div>
+
+<script>
+async function buscar() {
+    const termo = document.getElementById('termo').value;
+    const res = await fetch('/api/buscar-dados-maps', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({termo: termo, limite: 5})
+    });
+    const dados = await res.json();
+
+    let html = '';
+    dados.forEach(item => {
+        html += `<div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h5 class="card-title">${item.nome}</h5>
+                <p class="card-text">
+                    📍 ${item.endereco}<br>
+                    📞 ${item.telefone}<br>
+                    🌐 <a href="${item.site}" target="_blank">${item.site}</a>
+                </p>
+            </div>
+        </div>`;
+    });
+    document.getElementById('resultado').innerHTML = html;
+}
+</script>
+
+</body>
+</html>
