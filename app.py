@@ -10,7 +10,7 @@ from scraper import extrair_contatos
 
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta_mega_segura'  # 🔥 Troque por uma chave segura
+app.secret_key = '6e9750a7f8050c604ba15d542bfcd5b1d2453c264b8f9770'  # 🔥 Troque por uma chave segura
 CORS(app)
 
 

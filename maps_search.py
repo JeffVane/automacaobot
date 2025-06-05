@@ -9,27 +9,48 @@ import time
 import random
 
 
-# 🔥 Defina a função FORA de qualquer try
+# 🔥 Função robusta para encontrar elementos com vários seletores
+def encontrar_elemento(driver, lista_xpaths):
+    for xpath in lista_xpaths:
+        try:
+            return driver.find_element(By.XPATH, xpath)
+        except:
+            continue
+    return None
+
+
+# 🔥 Função de scroll inteligente
 def scroll_ate_pegar_cards(driver, scroll_area, limite_desejado):
     tentativas = 0
     cards = []
 
-    while tentativas < 30:  # 🔥 Protege de loop infinito
-        driver.execute_script("arguments[0].scrollTop += 1000", scroll_area)
-        time.sleep(random.uniform(1.2, 2.0))
+    while tentativas < 50:
+        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scroll_area)
+        time.sleep(random.uniform(1.5, 2.5))
 
         cards = driver.find_elements(By.XPATH, '//a[contains(@href, "/place/")]')
         print(f"🔍 Cards carregados até agora: {len(cards)}")
 
         if len(cards) >= limite_desejado:
+            print(f"🎯 Alcançado o limite desejado de {limite_desejado} cards.")
             break
 
         tentativas += 1
 
+    if len(cards) == 0:
+        print("⚠️ Nenhum card encontrado, tentando clicar manualmente no primeiro item da lista.")
+        try:
+            primeiro = driver.find_element(By.XPATH, '(//div[@role="article"])[1]')
+            driver.execute_script("arguments[0].scrollIntoView(true);", primeiro)
+            primeiro.click()
+            time.sleep(4)
+        except:
+            print("❌ Não foi possível clicar no primeiro item.")
+
     return cards
 
 
-
+# 🔥 Função principal
 def buscar_dados_cards_maps(termo, limite=50, username=None, status_buscas=None):
     options = webdriver.ChromeOptions()
     options.add_argument('--disable-blink-features=AutomationControlled')
@@ -41,7 +62,7 @@ def buscar_dados_cards_maps(termo, limite=50, username=None, status_buscas=None)
     driver.get("https://www.google.com/")
     time.sleep(2)
 
-    # Aceita cookies, se aparecer
+    # Aceita cookies
     try:
         aceitar = driver.find_element(By.XPATH, "//button/div[contains(text(),'Aceitar')]")
         aceitar.click()
@@ -58,13 +79,13 @@ def buscar_dados_cards_maps(termo, limite=50, username=None, status_buscas=None)
     try:
         aba_maps = driver.find_element(By.PARTIAL_LINK_TEXT, "Maps")
         aba_maps.click()
-        time.sleep(5)
+        time.sleep(random.uniform(6, 8))
     except Exception as e:
         print("❌ Erro ao clicar na aba Maps:", e)
         driver.quit()
         return []
 
-    # 🔥 Scroll para carregar os cards
+    # Faz o scroll
     try:
         scroll_area = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, '//div[@role="feed"]'))
@@ -72,7 +93,6 @@ def buscar_dados_cards_maps(termo, limite=50, username=None, status_buscas=None)
 
         cards = scroll_ate_pegar_cards(driver, scroll_area, limite)
         print(f"✅ Total de cards encontrados: {len(cards)}")
-
 
     except Exception as e:
         print("❌ Erro ao rolar:", e)
@@ -84,34 +104,34 @@ def buscar_dados_cards_maps(termo, limite=50, username=None, status_buscas=None)
     if status_buscas and username:
         status_buscas[username]['parciais'] = []
 
-    # 🔍 Coleta dados dos cards
+    # 🔍 Processa os cards
     for i, card in enumerate(cards[:limite]):
         try:
             driver.execute_script("arguments[0].scrollIntoView(true);", card)
             card.click()
-            time.sleep(4)
+            time.sleep(random.uniform(3.5, 5))
 
-            nome = telefone = endereco = site = ""
+            nome = encontrar_elemento(driver, [
+                '//h1[contains(@class, "DUwDvf")]',
+                '//*[@id="QA0Szd"]//h1',
+                '//h1'
+            ])
+            nome = nome.text if nome else "Não encontrado"
 
-            try:
-                nome = driver.find_element(By.XPATH, '//h1[contains(@class, "DUwDvf")]').text
-            except:
-                pass
+            endereco = encontrar_elemento(driver, [
+                '//button[contains(@data-item-id, "address")]'
+            ])
+            endereco = endereco.text if endereco else "Não encontrado"
 
-            try:
-                endereco = driver.find_element(By.XPATH, '//button[contains(@data-item-id, "address")]').text
-            except:
-                pass
+            telefone = encontrar_elemento(driver, [
+                '//button[contains(@data-item-id, "phone")]'
+            ])
+            telefone = telefone.text if telefone else "Não encontrado"
 
-            try:
-                telefone = driver.find_element(By.XPATH, '//button[contains(@data-item-id, "phone")]').text
-            except:
-                pass
-
-            try:
-                site = driver.find_element(By.XPATH, '//a[contains(@data-item-id, "authority")]').get_attribute('href')
-            except:
-                pass
+            site = encontrar_elemento(driver, [
+                '//a[contains(@data-item-id, "authority")]'
+            ])
+            site = site.get_attribute('href') if site else "Não encontrado"
 
             resultado = {
                 "nome": nome,
@@ -132,7 +152,7 @@ def buscar_dados_cards_maps(termo, limite=50, username=None, status_buscas=None)
                 status_buscas[username]["progresso"] = min(progresso, 100)
 
         except Exception as e:
-            print(f"❌ Erro ao processar card {i+1}: {e}")
+            print(f"❌ Erro ao processar card {i + 1}: {e}")
             continue
 
     driver.quit()

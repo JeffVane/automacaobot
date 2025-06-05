@@ -39,69 +39,66 @@
             <i class="fas fa-cog"></i> Configurações
         </button>
         <button class="tab-btn" onclick="abrirAba('conversas')">
-        <i class="fas fa-comments"></i> Conversas
+            <i class="fas fa-comments"></i> Conversas
         </button>
     </div>
 
     <div class="main-container">
-    <!-- 🔍 Aba Buscador -->
-    <div id="aba-buscador" class="aba-content show">
-        <div class="search-card fade-in">
-            <h2 class="card-title">
-                <i class="fas fa-search"></i>
-                Buscador de Leads
-            </h2>
-            <form class="search-form" onsubmit="iniciarBusca(); return false;">
-                <div class="input-group">
-                    <i class="fas fa-search input-icon"></i>
-                    <input
-                        id="termo"
-                        class="form-input"
-                        placeholder="Digite o termo, ex: Clínica Odontológica"
-                        required
-                    >
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-hashtag input-icon"></i>
-                    <input
-                        id="limite"
-                        type="number"
-                        class="form-input"
-                        value="50"
-                        min="1"
-                        max="100"
-                        placeholder="Qtd de leads (máx 100)"
-                        required
-                    >
-                </div>
-                <button type="submit" class="search-btn">
+        <!-- 🔍 Aba Buscador -->
+        <div id="aba-buscador" class="aba-content show">
+            <div class="search-card fade-in">
+                <h2 class="card-title">
                     <i class="fas fa-search"></i>
-                    Buscar
-                </button>
-            </form>
-        </div>
-
-        <!-- 🔥 Status da Busca -->
-        <div class="status-busca" id="status-busca">
-            <p id="mensagem-status">Aguardando...</p>
-            <div class="barra-progresso">
-                <div id="progresso-barra" class="progresso-barra"></div>
+                    Buscador de Leads
+                </h2>
+                <form class="search-form" onsubmit="iniciarBusca(); return false;">
+                    <div class="input-group">
+                        <i class="fas fa-search input-icon"></i>
+                        <input
+                            id="termo"
+                            class="form-input"
+                            placeholder="Digite o termo, ex: Clínica Odontológica"
+                            required
+                        >
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-hashtag input-icon"></i>
+                        <input
+                            id="limite"
+                            type="number"
+                            class="form-input"
+                            value="50"
+                            min="1"
+                            max="100"
+                            placeholder="Qtd de leads (máx 100)"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Buscar
+                    </button>
+                </form>
             </div>
-            <div id="progresso-porcentagem">0%</div>
 
-            <!-- 🔥 O que o robô está vendo -->
-            <div class="visao-atual">
-                <h4>🕵️‍♂️ Vendo no Google Maps:</h4>
-                <ul id="lista-visao-atual"></ul>
+            <!-- 🔥 Status da Busca -->
+            <div class="status-busca" id="status-busca">
+                <p id="mensagem-status">Aguardando...</p>
+                <div class="barra-progresso">
+                    <div id="progresso-barra" class="progresso-barra"></div>
+                </div>
+                <div id="progresso-porcentagem">0%</div>
+
+                <!-- 🔥 O que o robô está vendo -->
+                <div class="visao-atual">
+                    <h4>🕵️‍♂️ Vendo no Google Maps:</h4>
+                    <ul id="lista-visao-atual"></ul>
+                </div>
             </div>
+
+            <!-- 🔥 Resultados -->
+            <div id="resultado" class="results-container"></div>
         </div>
-
-        <!-- 🔥 Resultados -->
-        <div id="resultado" class="results-container"></div>
-    </div>
-</div>
-
-
 
         <!-- 📜 Aba Histórico -->
         <div id="aba-historico" class="aba-content">
@@ -114,43 +111,81 @@
             <h2><i class="fas fa-cog"></i> Configurações</h2>
             <p>gerenciar usuários e preferências.</p>
         </div>
-    </div>
 
-    <!-- 📜 Aba Conversas -->
-    <div id="aba-conversas" class="aba-content">
-    <h2><i class="fas fa-comments"></i> Conversas</h2>
+        <!-- 💬 Aba Conversas (Layout WhatsApp-like) -->
+        <div id="aba-conversas" class="aba-content">
+            <div class="whatsapp-container">
+                <!-- Barra Lateral de Chats e Contatos -->
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <div class="user-avatar-circle">
+                            <i class="fas fa-user"></i> <!-- Ícone de usuário para avatar -->
+                        </div>
+                        <div class="header-icons">
+                            <i class="fas fa-comment-dots"></i> <!-- Ícone de nova conversa -->
+                            <i class="fas fa-ellipsis-v"></i> <!-- Ícone de menu -->
+                        </div>
+                    </div>
+                    <div class="search-chat-bar">
+                        <input type="text" placeholder="Pesquisar ou iniciar uma nova conversa">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
 
-    <div class="chat-wrapper">
-        <!-- Lista de clientes -->
-        <div class="chat-sidebar">
-            <h4>Clientes</h4>
-            <ul id="lista-clientes">
-                <li onclick="selecionarCliente('cliente1')">Cliente 1</li>
-                <li onclick="selecionarCliente('cliente2')">Cliente 2</li>
-                <li onclick="selecionarCliente('cliente3')">Cliente 3</li>
-            </ul>
-        </div>
+                    <div class="notification-banner">
+                        <div class="notification-icon"><i class="fas fa-bell"></i></div>
+                        <div class="notification-text">
+                            Seja notificado de novas mensagens
+                            <a href="#" class="notification-link">Ativar notificações de área de trabalho</a>
+                        </div>
+                        <div class="notification-close"><i class="fas fa-times"></i></div>
+                    </div>
 
-        <!-- Área do chat -->
-        <div class="chat-area">
-            <div class="chat-messages" id="chat-messages">
-                <!-- Mensagens aparecerão aqui -->
+                    <div class="chat-sections">
+                        <div class="section-title">CHATS</div>
+                        <ul id="chat-list-whatsapp">
+                            <!-- Chats serão carregados aqui pelo JavaScript -->
+                        </ul>
+                        <div class="section-title">CONTATOS</div>
+                        <ul id="contact-list-whatsapp">
+                            <!-- Contatos serão carregados aqui pelo JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área da Conversa -->
+                <div class="chat-main">
+                    <div class="chat-main-header" id="chat-main-header">
+                        <div class="chat-partner-info">
+                            <div class="client-avatar-chat">
+                                <img src="https://placehold.co/40x40/007bff/ffffff?text=???" alt="Avatar do Contato">
+                            </div>
+                            <div class="partner-details">
+                                <h3 id="chat-partner-name">Selecione uma conversa</h3>
+                                <p id="chat-partner-status" class="status-text">clique para ver as informações do contato</p>
+                            </div>
+                        </div>
+                        <div class="header-action-icons">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+
+                    <div class="chat-main-messages" id="chat-messages-display">
+                        <!-- Mensagens aparecerão aqui -->
+                    </div>
+
+                    <div class="chat-main-input-area">
+                        <button class="icon-button"><i class="fas fa-paperclip"></i></button>
+                        <input type="text" id="message-input" placeholder="Digite sua mensagem aqui">
+                        <button class="icon-button" id="send-message-button"><i class="fas fa-microphone"></i></button>
+                    </div>
+                </div>
             </div>
-
-            <div class="chat-input">
-                <input type="text" id="mensagem" placeholder="Digite sua mensagem...">
-                <button onclick="enviarMensagem()">
-                    <i class="fas fa-paper-plane"></i> Enviar
-                </button>
-            </div>
         </div>
-    </div>
-</div>
-
-
+    </div> <!-- Fim do main-container -->
 
     <script>
-        // 🔄 Controle das Abas
+        // 🔄 Controle das Abas (já existente)
         function abrirAba(nomeAba) {
             const abas = document.querySelectorAll('.aba-content');
             const botoes = document.querySelectorAll('.tab-btn');
@@ -159,95 +194,22 @@
             botoes.forEach(btn => btn.classList.remove('active'));
 
             document.getElementById(`aba-${nomeAba}`).classList.add('show');
+            // 'event.target' é o botão clicado
             event.target.classList.add('active');
         }
 
-        // 🔍 Função de Busca (já existente)
-        async function buscar() {
-            const termo = document.getElementById('termo').value;
-            const loadingEl = document.getElementById('loading');
-            const resultadoEl = document.getElementById('resultado');
-
-            loadingEl.classList.add('show');
-            resultadoEl.innerHTML = '';
-
-            try {
-                const res = await fetch('/api/buscar-dados-maps', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({termo: termo, limite: 5})
-                });
-
-                const dados = await res.json();
-                loadingEl.classList.remove('show');
-
-                if (dados.length === 0) {
-                    resultadoEl.innerHTML = `
-                        <div class="empty-state fade-in">
-                            <i class="fas fa-search empty-icon"></i>
-                            <h3>Nenhum resultado encontrado</h3>
-                            <p>Tente refinar sua busca ou usar termos diferentes</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                let html = '';
-                dados.forEach((item, index) => {
-                    html += `
-                        <div class="result-card fade-in" style="animation-delay: ${index * 0.1}s">
-                            <h3 class="result-title">
-                                <i class="fas fa-building"></i>
-                                ${item.nome}
-                            </h3>
-                            <div class="result-info">
-                                <div class="info-item">
-                                    <i class="fas fa-map-marker-alt info-icon"></i>
-                                    <span>${item.endereco}</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fas fa-phone info-icon"></i>
-                                    <span>${item.telefone}</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fas fa-globe info-icon"></i>
-                                    <a href="${item.site}" target="_blank" class="info-link">${item.site}</a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                resultadoEl.innerHTML = html;
-
-            } catch (error) {
-                loadingEl.classList.remove('show');
-                resultadoEl.innerHTML = `
-                    <div class="empty-state fade-in">
-                        <i class="fas fa-exclamation-triangle empty-icon" style="color: var(--danger)"></i>
-                        <h3>Erro na busca</h3>
-                        <p>Ocorreu um erro ao buscar os dados. Tente novamente.</p>
-                    </div>
-                `;
-                console.error('Erro na busca:', error);
-            }
-        }
-
-        document.getElementById('termo').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                buscar();
-            }
-        });
-
         window.addEventListener('load', function() {
             document.querySelector('.search-card').style.animationDelay = '0.2s';
+            // Chama a função para renderizar a sidebar de conversas quando a página carregar
+            if (typeof renderWhatsappSidebar === 'function') {
+                renderWhatsappSidebar();
+            }
         });
     </script>
 
-<script src="static/conversas.js"></script>
-<script src="static/buscador.js"></script>
-
+    <!-- Seus scripts JS externos -->
+    <script src="static/buscador.js"></script>
+    <script src="static/conversas.js"></script>
 
 </body>
 </html>
