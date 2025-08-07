@@ -951,3 +951,403 @@ body {
         font-size: 0.9em;
     }
 }
+
+
+.nova-conversa-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 16px 14px 16px;
+}
+
+.nova-conversa-container input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.nova-conversa-container input:focus {
+    border-color: #25d366;
+}
+
+.nova-conversa-container button {
+    background-color: #25d366;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.nova-conversa-container button:hover {
+    background-color: #1ebe5d;
+}
+
+.start-new-chat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+}
+
+.start-new-chat input[type="text"] {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+    background-color: #fff;
+}
+
+.start-new-chat input[type="text"]:focus {
+    border-color: #25d366;
+}
+
+.start-new-chat button {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-new-chat button:hover {
+    background-color: #1ebe5d;
+}
+.unread-badge {
+    background-color: #25d366;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.header-action-icons i.fa-trash {
+    color: #dc3545;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.header-action-icons i.fa-trash:hover {
+    color: #a71d2a;
+}
+
+
+/* --- Novas Classes para Leads Pendentes e Histórico --- */
+
+.leads-list-container {
+    margin-top: 20px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Layout responsivo */
+}
+
+.lead-card {
+    background-color: var(--card-bg-color); /* Usar variável definida para fundo do card */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para empurrar botões para baixo */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-left: 5px solid var(--primary-color); /* Borda decorativa */
+}
+
+.lead-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.lead-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.lead-card h3 i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.lead-card p {
+    margin-bottom: 8px;
+    color: var(--text-color-secondary);
+    font-size: 0.95em;
+    display: flex;
+    align-items: flex-start;
+}
+
+.lead-card p i {
+    margin-right: 8px;
+    color: var(--icon-color); /* Cor dos ícones */
+    flex-shrink: 0; /* Evita que o ícone encolha */
+    width: 20px; /* Largura fixa para ícones */
+    text-align: center;
+}
+
+.lead-card .actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha */
+}
+
+.lead-card .action-btn {
+    background-color: var(--accent-color); /* Cor de destaque */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.lead-card .action-btn:hover {
+    background-color: #0056b3; /* Tom mais escuro para hover */
+}
+
+.lead-card .action-btn i {
+    margin-right: 8px;
+}
+
+.lead-card .action-btn.whatsapp {
+    background-color: #25D366; /* Cor do WhatsApp */
+}
+
+.lead-card .action-btn.whatsapp:hover {
+    background-color: #1DA851;
+}
+
+.lead-card .action-btn.view-all {
+    background-color: #6c757d; /* Cor neutra */
+}
+
+.lead-card .action-btn.view-all:hover {
+    background-color: #5a6268;
+}
+
+.no-leads-message {
+    text-align: center;
+    color: var(--text-color-secondary);
+    font-style: italic;
+    margin-top: 30px;
+    font-size: 1.1em;
+    grid-column: 1 / -1; /* Ocupa todas as colunas no grid */
+}
+
+/* Filtro de busca */
+.filter-controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-controls input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.filter-controls .refresh-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.filter-controls .refresh-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Badge para contagem de leads pendentes */
+.badge {
+    background-color: #ff4500; /* Laranja vibrante para destaque */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 50%;
+    font-size: 0.75em;
+    margin-left: 8px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* --- Seção de Ações em Massa para Leads Pendentes --- */
+
+.bulk-actions {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+    gap: 10px; /* Espaçamento entre os itens */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9; /* Fundo leve para destacar a seção */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.bulk-actions label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap; /* Evita que o texto quebre */
+}
+
+.bulk-actions input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px; /* Tamanho maior para o checkbox */
+    height: 18px;
+    accent-color: #007bff; /* Cor do checkbox quando marcado */
+    cursor: pointer;
+}
+
+.bulk-actions .template-select {
+    flex-grow: 1; /* Permite que o select ocupe o espaço disponível */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #555;
+    appearance: none; /* Remove o estilo padrão do select em alguns navegadores */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.1L146.2%20209.7%2018.7%2074.5a17.6%2017.6%200%200%0a0-24.6c-6.7-6.7-17.7-6.7-24.5%200L.7%2087.6a17.6%2017.6%200%200%200%200%2024.5l133.7%20133.7a17.6%2017.6%200%200%200%2024.5%200l133.7-133.7a17.6%2017.6%200%200%200%200-24.5c-6.8-6.7-17.7-6.7-24.5%200z%22%2F%3E%3C%2Fsvg%3E'); /* Seta customizada */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    cursor: pointer;
+    max-width: 300px; /* Limita a largura do select para não ficar muito grande */
+}
+
+/* --- Estilos para os Botões de Ação --- */
+.action-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaçamento entre o ícone e o texto */
+    white-space: nowrap; /* Evita que o texto quebre */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn i {
+    font-size: 1.1rem;
+}
+
+/* Estilo para o botão de "Enviar Templates Selecionados" */
+.send-bulk-template-btn {
+    background-color: #28a745; /* Verde do WhatsApp */
+    color: white;
+}
+
+.send-bulk-template-btn:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.send-bulk-template-btn:active {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para o botão de "Marcar Selecionados como Contatados" */
+.mark-bulk-contacted-btn {
+    background-color: #007bff; /* Azul primário */
+    color: white;
+}
+
+.mark-bulk-contacted-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.mark-bulk-contacted-btn:active {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para botões desabilitados (durante o envio, por exemplo) */
+.action-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+
+/* --- Ajustes para o Contêiner do Checkbox Individual --- */
+.bulk-checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adiciona um pequeno espaço abaixo do checkbox */
+}
+
+.bulk-checkbox-container label {
+    font-size: 0.9em; /* Um pouco menor que o texto principal */
+    color: #666;
+    margin-left: 5px; /* Espaço entre o checkbox e o label */
+}
+
+.bulk-checkbox-container input[type="checkbox"] {
+    width: 16px; /* Tamanho para o checkbox individual */
+    height: 16px;
+    accent-color: #007bff;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .bulk-actions {
+        flex-direction: column; /* Empilha os itens em telas menores */
+        align-items: stretch; /* Estica os itens para preencher a largura */
+    }
+
+    .bulk-actions .template-select,
+    .action-btn {
+        width: 100%; /* Faz com que ocupem a largura total */
+        max-width: none; /* Remove o limite de largura */
+    }
+}

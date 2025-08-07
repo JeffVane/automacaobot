@@ -1,0 +1,26 @@
+[
+  {
+    "nome": "Minha Clínica - Asa Sul",
+    "telefone": null,
+    "endereco": "\nSCS, Quadra 02, Bloco B, Lote 20 Edifício Palácio do Comércio, Sobreloja 02 - Asa Sul, Brasília - DF, 70302-000",
+    "site": "http://www.aminhaclinica.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "pendente"
+  },
+  {
+    "nome": "Clínica Santa Rita",
+    "telefone": null,
+    "endereco": "\nSDS - Edifício Miguel Badya, 4° andar, Brasília - DF, 70740-610",
+    "site": "http://clinicasantarita.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "pendente"
+  },
+  {
+    "nome": "Clínica Brasília Especialidades Médicas",
+    "telefone": null,
+    "endereco": "\nCentro Médico Lúcio Costa - 610/611, Via L2 Sul, Bloco 1, Sala 144 - Asa Sul, Brasília - DF, 70200-700",
+    "site": "http://www.clinicabrasilia.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "pendente"
+  }
+]

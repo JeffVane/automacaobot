@@ -123,3 +123,30 @@ function verificarStatus() {
     }, 1500);
 }
 
+function adicionarNovoContato() {
+    const input = document.getElementById('novo-numero');
+    const numero = input.value.trim();
+
+    if (!numero || !/^\d{10,15}$/.test(numero)) {
+        alert("Digite um número válido no formato internacional. Ex: 5511999999999");
+        return;
+    }
+
+    // Evita duplicar se já estiver na lista
+    if (!whatsappChatData[numero]) {
+        whatsappChatData[numero] = {
+            name: numero,  // você pode substituir por um nome real se tiver
+            avatar: 'https://placehold.co/40x40/075e54/ffffff?text=WA',
+            lastMessageSnippet: '',
+            lastMessageTime: '',
+            status: 'online',
+            messages: []
+        };
+    }
+
+    // Limpa campo e renderiza
+    input.value = '';
+    renderWhatsappSidebar();
+    selecionarWhatsappCliente(numero);
+}
+

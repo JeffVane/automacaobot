@@ -1,0 +1,98 @@
+[
+  {
+    "nome": "Clínica Goiás | Clínica Médica, Exames Laboratoriais e Odontologia",
+    "telefone": null,
+    "endereco": "\nAv. Nazareth, 1591 - Jardim Guanabara, Goiânia - GO, 74675-610",
+    "site": "https://clinicagoias.com/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Centro Clínico de Valparaíso",
+    "telefone": null,
+    "endereco": "\nQuadra 18, Etapa A, lote 46, GO, 72876-054",
+    "site": "http://www.ccvalparaiso.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Noroeste",
+    "telefone": null,
+    "endereco": "\n12387 - lote - Av. Goiás Norte, 25 - quadra 16 - Res. Recanto do Bosque, Goiânia - GO, 74474-319",
+    "site": "https://clinicanoroestegoiania.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Goiânia Clínica Cooperativa",
+    "telefone": null,
+    "endereco": "\nR. 102, 48 - St. Sul, Goiânia - GO, 74083-250",
+    "site": "https://www.goianiaclinica.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "POLICLINICA ESTADUAL DA REGIÃO RIO VERMELHO - GOIAS",
+    "telefone": null,
+    "endereco": "\nGoiás, GO, 76600-000",
+    "site": "https://www.policlinicagoias.org.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Vittá Unidade Centro",
+    "telefone": null,
+    "endereco": "\nAv. Independência, 4259 - St. Central, Goiânia - GO, 74050-100",
+    "site": "https://clinicavittagoiania.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Brasil",
+    "telefone": null,
+    "endereco": "\nAv. T-1, 110 - St. Bueno, Goiânia - GO, 74210-300",
+    "site": "https://clinicabrasilgoiania.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Salve - Saúde Popular - Goiânia Centro",
+    "telefone": null,
+    "endereco": "\nR. 6, 430 - Qd 55 Lt 52 - St. Central, Goiânia - GO, 74023-030",
+    "site": "http://www.salve.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Sant'Ana",
+    "telefone": null,
+    "endereco": "\nR. São Paulo, 29 - centro, Goiás - GO, 76600-000",
+    "site": "http://clinicasantanagoias.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Minha Clínica - Asa Sul",
+    "telefone": null,
+    "endereco": "\nSCS, Quadra 02, Bloco B, Lote 20 Edifício Palácio do Comércio, Sobreloja 02 - Asa Sul, Brasília - DF, 70302-000",
+    "site": "http://www.aminhaclinica.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Santa Rita",
+    "telefone": null,
+    "endereco": "\nSDS - Edifício Miguel Badya, 4° andar, Brasília - DF, 70740-610",
+    "site": "http://clinicasantarita.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  },
+  {
+    "nome": "Clínica Brasília Especialidades Médicas",
+    "telefone": null,
+    "endereco": "\nCentro Médico Lúcio Costa - 610/611, Via L2 Sul, Bloco 1, Sala 144 - Asa Sul, Brasília - DF, 70200-700",
+    "site": "http://www.clinicabrasilia.com.br/",
+    "categoria": "Não encontrado",
+    "status_contato": "novo"
+  }
+]
